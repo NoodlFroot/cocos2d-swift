@@ -142,7 +142,7 @@
 
 - (void) inputEnteredWithWorlPos:(CGPoint)worldLocation
 {
-    if ([_handle hitTestWithWorldPos:worldLocation])
+    if ([_handle clippedHitTestWithWorldPos:worldLocation])
     {
         // Touch down in slider handle
         _draggingHandle = YES;
