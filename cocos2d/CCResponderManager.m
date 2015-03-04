@@ -107,7 +107,7 @@
 - (void)buildResponderList:(CCNode *)node
 {
     // dont add invisible nodes
-    if (!node.visible) return;
+    if (!node.visible || node.paused) return; // RAG: Following advice in http://forum.cocos2d-swift.org/t/how-to-get-paused-in-cocos2d-swift-3-0-onexit-not-work-now/15602/9
     
     BOOL shouldAddNode = node.isUserInteractionEnabled;
     

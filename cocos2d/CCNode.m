@@ -1304,12 +1304,15 @@ CGAffineTransformMakeRigid(CGPoint translate, CGFloat radians)
 
 -(void)setPaused:(BOOL)paused
 {
-	if(_paused != paused){
+	if(_paused != paused)
+    {
 		BOOL wasRunning = self.runningInActiveScene;
 		_paused = paused;
 		[self wasRunning:wasRunning];
 		
 		RecursivelyIncrementPausedAncestors(self, (paused ? 1 : -1));
+        
+        [[[CCDirector sharedDirector] responderManager] markAsDirty];// RAG: Following advice in http://forum.cocos2d-swift.org/t/how-to-get-paused-in-cocos2d-swift-3-0-onexit-not-work-now/15602/9
 	}
 }
 
