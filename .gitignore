@@ -28,7 +28,7 @@ dsa_priv.pem
 *.xccheckout
 
 # Xcode 4
-#xcuserdata/
+xcuserdata/
 #project.xcworkspace/
 
 # Generated files
