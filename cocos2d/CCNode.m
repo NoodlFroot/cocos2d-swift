@@ -1307,12 +1307,15 @@ CGAffineTransformMakeRigid(CGPoint translate, CGFloat radians)
 
 -(void)setPaused:(BOOL)paused
 {
-	if(_paused != paused){
+	if(_paused != paused)
+    {
 		BOOL wasRunning = self.runningInActiveScene;
 		_paused = paused;
 		[self wasRunning:wasRunning];
 		
 		RecursivelyIncrementPausedAncestors(self, (paused ? 1 : -1));
+        
+        [[[CCDirector sharedDirector] responderManager] markAsDirty];// RAG: Following advice in http://forum.cocos2d-swift.org/t/how-to-get-paused-in-cocos2d-swift-3-0-onexit-not-work-now/15602/9
 	}
 }
 
@@ -1653,7 +1656,52 @@ CGAffineTransformMakeRigid(CGPoint translate, CGFloat radians)
 
 /** Returns YES, if touch is inside sprite
  Added hit area expansion / contraction
+ Override for alternative clipping behavior, such as if you want to clip input to a circle.
  */
+- (BOOL)hitTestWithWorldPos:(CGPoint)pos
+{
+	pos = [self convertToNodeSpace:pos];
+	CGPoint offset = ccp(-self.hitAreaExpansion, -self.hitAreaExpansion);
+	CGSize size = CGSizeMake(self.contentSizeInPoints.width - offset.x, self.contentSizeInPoints.height - offset.y);
+	
+	return !(pos.y < offset.y || pos.y > size.height || pos.x < offset.x || pos.x > size.width);
+}
+
+- (BOOL)clippedHitTestWithWorldPos:(CGPoint)pos
+{
+	// If *any* parent node clips input and we're outside their clipping range, reject the hit.
+	if(_parent != nil && [_parent rejectClippedInput:pos]){
+		return NO;
+	}
+	
+	return [self hitTestWithWorldPos:pos];
+}
+
+- (BOOL) rejectClippedInput:(CGPoint)pos
+{
+	// If this clips input, do the bounds test to clip against this node
+	if(self.clipsInput && ![self hitTestWithWorldPos:pos]){
+		// outside of this node, reject this!
+		return YES;
+	}
+	
+	if(_parent == nil){
+		// Terminating condition, the hit was not rejected
+		return NO;
+	}
+	
+	return [_parent rejectClippedInput:pos];
+}
+// -----------------------------------------------------------------
+
+// -----------------------------------------------------------------
+#pragma mark - touch interface
+// -----------------------------------------------------------------
+
+/** Returns YES, if touch is inside sprite
+ Added hit area expansion / contraction
+ */
+/* ORIGINAL V3 version
 - (BOOL)hitTestWithWorldPos:(CGPoint)pos
 {
     pos = [self convertToNodeSpace:pos];
@@ -1663,6 +1711,7 @@ CGAffineTransformMakeRigid(CGPoint translate, CGFloat radians)
     
     return(YES);
 }
+*/
 
 // -----------------------------------------------------------------
 

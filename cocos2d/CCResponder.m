@@ -69,7 +69,12 @@
 
 - (BOOL)hitTestWithWorldPos:(CGPoint)pos
 {
-    return(NO);
+	return(NO);
+}
+
+- (BOOL)clippedHitTestWithWorldPos:(CGPoint)pos
+{
+	return NO;
 }
 
 // -----------------------------------------------------------------

@@ -253,7 +253,11 @@ static CCDirector *_sharedDirector = nil;
 		[renderer prepareWithProjection:&projection framebuffer:_framebuffer];
 		[CCRenderer bindRenderer:renderer];
 		
-		[renderer enqueueClear:(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT) color:_runningScene.colorRGBA.glkVector4 depth:1.0f stencil:0 globalSortOrder:NSIntegerMin];
+        // RAG: Check for a transparent OpenGL view - so we can have other views (eg a video) under it
+        GLKVector4 clearColour = _runningScene.colorRGBA.glkVector4;
+        clearColour.a = ccview.opaque == NO ? 0.0 : 1.0;
+        
+		[renderer enqueueClear:(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT) color:clearColour depth:1.0f stencil:0 globalSortOrder:NSIntegerMin];
 		
 		// Render
 		[_runningScene visit:renderer parentTransform:&projection];

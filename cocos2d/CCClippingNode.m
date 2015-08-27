@@ -291,7 +291,8 @@ SetProgram(CCNode *n, CCShader *p, NSNumber *alpha) {
 			}
 		} globalSortOrder:NSIntegerMax debugLabel:@"CCClippingNode: Restore" threadSafe:NO];
 		
-		[renderer popGroupWithDebugLabel:@"CCClippingNode: Visit" globalSortOrder:0];
+    [renderer popGroupWithDebugLabel:self.name ? [@"CCClippingNode: Visit - " stringByAppendingString:self.name] : @"CCClippingNode: Visit"
+                     globalSortOrder:0];
   
     // we are done using this layer, decrement
     layer--;
