@@ -39,20 +39,39 @@
  cocos2d helper macros
  */
 
-#if defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && !defined(COCOS2D_ANDROID)
-#define __CC_PLATFORM_IOS 1
-#define __CC_PLATFORM_MAC 0
-#define __CC_PLATFORM_ANDROID_FIXME 1
-#elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && !defined(COCOS2D_ANDROID)
-#define __CC_PLATFORM_MAC 1
-#define __CC_PLATFORM_IOS 0
-#endif
+// Define the platform we are on
+#if !defined(COCOS2D_ANDROID)
 
-#ifdef COCOS2D_ANDROID
-#define __CC_PLATFORM_MAC 0
-#define __CC_PLATFORM_IOS 0
-#define __CC_PLATFORM_ANDROID 1
-#define __CC_PLATFORM_ANDROID_FIXME 1
+    #if defined(__TV_OS_VERSION_MAX_ALLOWED)
+
+        // TV OS platform - NB: tvOS is considered as iOS but has some wrinkles (eg no orientation)
+        #define __CC_PLATFORM_TVOS 1
+        #define __CC_PLATFORM_IOS 1
+        #define __CC_PLATFORM_MAC 0
+        #define __CC_PLATFORM_ANDROID_FIXME 1
+
+    #elif defined(__IPHONE_OS_VERSION_MAX_ALLOWED)
+
+        // iOS
+        #define __CC_PLATFORM_IOS 1
+        #define __CC_PLATFORM_MAC 0
+        #define __CC_PLATFORM_ANDROID_FIXME 1
+
+    #elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
+
+        // Mac OS X platform
+        #define __CC_PLATFORM_MAC 1
+        #define __CC_PLATFORM_IOS 0
+
+    #endif
+#else
+
+    // Android platform
+    #define __CC_PLATFORM_MAC 0
+    #define __CC_PLATFORM_IOS 0
+    #define __CC_PLATFORM_ANDROID 1
+    #define __CC_PLATFORM_ANDROID_FIXME 1
+
 #endif
 
 // Metal is only supported on iOS devices (currently does not include the simulator) and on iOS 8 and greater.
