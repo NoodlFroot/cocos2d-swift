@@ -231,10 +231,12 @@ extern EAGLContext *CCRenderDispatchSetupGL(EAGLRenderingAPI api, EAGLSharegroup
 			return nil;
 		}
         
+#if !defined(__CC_PLATFORM_TVOS)
         /** Multiple touch default enabled
          */
         self.multipleTouchEnabled = YES;
-
+#endif
+        
         _touchEvent = [[CCTouchEvent alloc] init];
 	}
 
