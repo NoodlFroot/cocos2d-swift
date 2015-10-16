@@ -43,18 +43,17 @@
 const CGSize FIXED_SIZE = {568, 384};
 
 @interface CCNavigationController ()
-{
-    CCAppDelegate* __weak _appDelegate;
-    NSString* _screenOrientation;
-}
+
 @property (nonatomic, weak) CCAppDelegate* appDelegate;
+#if !defined(__CC_PLATFORM_TVOS)
 @property (nonatomic, strong) NSString* screenOrientation;
+#endif
+
 @end
 
 @implementation CCNavigationController
 
-@synthesize appDelegate = _appDelegate;
-@synthesize screenOrientation = _screenOrientation;
+#if !defined(__CC_PLATFORM_TVOS)
 
 // The available orientations should be defined in the Info.plist file.
 // And in iOS 6+ only, you can override it in the Root View controller in the "supportedInterfaceOrientations" method.
@@ -92,6 +91,7 @@ const CGSize FIXED_SIZE = {568, 384};
         return UIInterfaceOrientationIsLandscape(interfaceOrientation);
     }
 }
+#endif
 
 // Projection delegate is only used if the fixed resolution mode is enabled
 -(GLKMatrix4)updateProjection
@@ -123,10 +123,12 @@ const CGSize FIXED_SIZE = {568, 384};
 
 @synthesize window=window_, navController=navController_;
 
+#if !defined(__CC_PLATFORM_TVOS)
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
 	return UIInterfaceOrientationMaskAll;
 }
+#endif
 
 - (CCScene*) startScene
 {
@@ -187,8 +189,10 @@ FindPOTScale(CGFloat size, CGFloat fixedSize)
 	
 	CCDirectorIOS* director = (CCDirectorIOS*) [CCDirector sharedDirector];
 	
+#if !defined(__CC_PLATFORM_TVOS)
 	director.wantsFullScreenLayout = YES;
-	
+#endif
+    
 	// Display FSP and SPF
 	[director setDisplayStats:[config[CCSetupShowDebugStats] boolValue]];
 	
@@ -219,8 +223,9 @@ FindPOTScale(CGFloat size, CGFloat fixedSize)
 	navController_ = [[CCNavigationController alloc] initWithRootViewController:director];
 	navController_.navigationBarHidden = YES;
 	navController_.appDelegate = self;
+#if !defined(__CC_PLATFORM_TVOS)
 	navController_.screenOrientation = (config[CCSetupScreenOrientation] ?: CCScreenOrientationLandscape);
-    
+#endif
 	// for rotation and other messages
 	[director setDelegate:navController_];
 	
@@ -276,7 +281,7 @@ FindPOTScale(CGFloat size, CGFloat fixedSize)
 // iOS8 hack around orientation bug
 -(void)forceOrientation
 {
-#if __CC_PLATFORM_IOS && defined(__IPHONE_8_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0
+#if __CC_PLATFORM_IOS && defined(__IPHONE_8_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0 && !defined(__CC_PLATFORM_TVOS)
     if([navController_.screenOrientation isEqual:CCScreenOrientationAll])
     {
         [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationUnknown];
