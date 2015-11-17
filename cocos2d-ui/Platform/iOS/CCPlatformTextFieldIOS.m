@@ -11,6 +11,9 @@
 #import "CCControl.h"
 #import <UIKit/UIKit.h>
 
+// RAG: 17Nov2015: Adding this as the action block is called on return *and* on focus lost - I need to know just about the return pressed
+NSString* const CCPlatformTextFieldIOSReturnPressedNotification = @"CCPlatformTextFieldIOSReturnPressedNotification";
+
 @implementation CCPlatformTextFieldIOS {
     UITextField *_textField;
     CGFloat _scaleMultiplier;
@@ -119,6 +122,9 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    // RAG: 17Nov2015: Adding this as the action block is called on return *and* on focus lost - I need to know just about the return pressed
+    [[NSNotificationCenter defaultCenter] postNotificationName:CCPlatformTextFieldIOSReturnPressedNotification object:textField];
+    
     [textField resignFirstResponder];
     return YES;
 }
