@@ -256,7 +256,8 @@ BOOL NSMutableAttributedStringFixPlatformSpecificAttributes(NSMutableAttributedS
     NSRange fullRange = NSMakeRange(0, string.length);
     BOOL useFullColor = NO;
 #if !__CC_PLATFORM_ANDROID
-    if (NSAttributedStringHasAttribute(string, NSForegroundColorAttributeName)) {
+    if (NSAttributedStringHasAttribute(string, NSForegroundColorAttributeName) && false) // See http://forum.cocos2d-objc.org/t/cclabelttf-attributed-string/17803
+    {
         CGColorRef color = CGColorCreateWithPlatformSpecificColor([string attribute:NSForegroundColorAttributeName atIndex:0 effectiveRange:NULL]);
         [string addAttribute:(id)kCTForegroundColorFromContextAttributeName value:(__bridge id)color range:fullRange];
         CGColorRelease(color);
@@ -270,6 +271,12 @@ BOOL NSMutableAttributedStringFixPlatformSpecificAttributes(NSMutableAttributedS
     
     // Shadow
     if (NSAttributedStringHasAttribute(string, NSShadowAttributeName))
+    {
+        useFullColor = YES;
+    }
+    
+    // Links
+    if (NSAttributedStringHasAttribute(string, NSLinkAttributeName))
     {
         useFullColor = YES;
     }
