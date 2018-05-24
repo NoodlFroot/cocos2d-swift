@@ -54,7 +54,9 @@ NSString * const CCBlendEquationAlpha = @"CCBlendEquationAlpha";
 
 @implementation CCBlendModeCache
 
--(id)objectForKey:(id<NSCopying>)options
+// See https://github.com/cocos2d/cocos2d-objc/issues/1394 - something changed in XCode 9.4? Original code broke around May 2018
+//-(id)objectForKey:(id<NSCopying>)options
+-(id)objectForKey:(id)options
 {
 	CCBlendMode *blendMode = [self rawObjectForKey:options];
 	if(blendMode) return blendMode;
