@@ -316,7 +316,7 @@
  *
  *  @return The call block action.
  */
-+ (id)actionWithBlock:(void(^)())block;
++ (id)actionWithBlock:(void(^)(void))block;
 
 /**
  *  Initializes the action with the specified block, to be used as a callback.
@@ -326,7 +326,7 @@
  *
  *  @return An initialized call block action.
  */
-- (id)initWithBlock:(void(^)())block;
+- (id)initWithBlock:(void(^)(void))block;
 
 // Executes the selector on the specific target.
 - (void)execute;
