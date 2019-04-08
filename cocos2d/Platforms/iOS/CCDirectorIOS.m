@@ -269,16 +269,6 @@
 	[super viewDidLoad];
 }
 
-
-- (void)viewDidUnload
-{
-	CCLOG(@"cocos2d: viewDidUnload");
-
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
 #pragma mark helper
 
 -(void)getFPSImageData:(unsigned char**)datapointer length:(NSUInteger*)len contentScale:(CGFloat *)scale

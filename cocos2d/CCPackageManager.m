@@ -367,13 +367,13 @@
     {
         [self removeDownloadFile:packageUnzipper.package];
 
-        [_unzipTasks removeObject:packageUnzipper];
+        [self->_unzipTasks removeObject:packageUnzipper];
 
         [packageUnzipper.package setValue:@(CCPackageStatusUnzipped) forKey:@"status"];
 
-        if ([_delegate respondsToSelector:@selector(packageUnzippingFinished:)])
+        if ([self->_delegate respondsToSelector:@selector(packageUnzippingFinished:)])
         {
-            [_delegate packageUnzippingFinished:packageUnzipper.package];
+            [self->_delegate packageUnzippingFinished:packageUnzipper.package];
         }
 
         [self savePackagesForceWriteToDefaults:NO];
@@ -391,9 +391,9 @@
 {
     [self runOnCocosThread:^
     {
-        [_unzipTasks removeObject:packageUnzipper];
+        [self->_unzipTasks removeObject:packageUnzipper];
 
-        [_delegate packageUnzippingFailed:packageUnzipper.package error:error];
+        [self->_delegate packageUnzippingFailed:packageUnzipper.package error:error];
 
         [self savePackagesForceWriteToDefaults:NO];
     }];
@@ -403,9 +403,9 @@
 {
     [self runOnCocosThread:^
     {
-        if ([_delegate respondsToSelector:@selector(packageUnzippingProgress:unzippedBytes:totalBytes:)])
+        if ([self->_delegate respondsToSelector:@selector(packageUnzippingProgress:unzippedBytes:totalBytes:)])
         {
-            [_delegate packageUnzippingProgress:packageUnzipper.package unzippedBytes:unzippedBytes totalBytes:totalBytes];
+            [self->_delegate packageUnzippingProgress:packageUnzipper.package unzippedBytes:unzippedBytes totalBytes:totalBytes];
         }
     }];
 }

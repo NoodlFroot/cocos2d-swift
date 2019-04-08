@@ -54,10 +54,10 @@
         CCLOGINFO(@"[PACKAGE/UNZIP][INFO]: Unzipping package... %@", _package);
 
         NSError *error;
-        BOOL success = [SSZipArchive unzipFileAtPath:_package.localDownloadURL.path
-                                       toDestination:_package.unzipURL.path
+        BOOL success = [SSZipArchive unzipFileAtPath:self->_package.localDownloadURL.path
+                                       toDestination:self->_package.unzipURL.path
                                            overwrite:YES
-                                            password:_password
+                                            password:self->_password
                                                error:&error
                                             delegate:self];
 
@@ -65,22 +65,22 @@
         {
             CCLOGINFO(@"[PACKAGE/UNZIP][INFO]: Unzipping finished of package: %@", _package);
 
-            [_package setValue:@(CCPackageStatusUnzipped) forKey:@"status"];
+            [self->_package setValue:@(CCPackageStatusUnzipped) forKey:@"status"];
 
-            if ([_delegate respondsToSelector:@selector(unzipFinished:)])
+            if ([self->_delegate respondsToSelector:@selector(unzipFinished:)])
             {
-                [_delegate unzipFinished:self];
+                [self->_delegate unzipFinished:self];
             }
         }
         else
         {
-            CCLOG(@"[PACKAGE/UNZIP][ERROR]: Unzipping failed of package: %@ with error: %@", _package, error);
+            CCLOG(@"[PACKAGE/UNZIP][ERROR]: Unzipping failed of package: %@ with error: %@", self->_package, error);
 
-            [_package setValue:@(CCPackageStatusUnzipFailed) forKey:@"status"];
+            [self->_package setValue:@(CCPackageStatusUnzipFailed) forKey:@"status"];
 
-            if ([_delegate respondsToSelector:@selector(unzipFailed:error:)])
+            if ([self->_delegate respondsToSelector:@selector(unzipFailed:error:)])
             {
-                [_delegate unzipFailed:self error:error];
+                [self->_delegate unzipFailed:self error:error];
             }
         }
     });

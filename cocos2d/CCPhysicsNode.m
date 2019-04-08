@@ -547,7 +547,7 @@ ColorForShape(cpShape *shape, CCDrawNode *draw)
 	cpSpaceEachBody_b(_space.space, ^(cpBody *body){
 		if(cpBodyGetType(body) == CP_BODY_TYPE_DYNAMIC){
 			cpVect cog = cpBodyLocalToWorld(body, cpBodyGetCenterOfGravity(body));
-			[_debugDraw drawDot:CPV_TO_CCP(cog) radius:1.5 color:[CCColor colorWithRed:1 green:1 blue:0 alpha:1]];
+            [self->_debugDraw drawDot:CPV_TO_CCP(cog) radius:1.5 color:[CCColor colorWithRed:1 green:1 blue:0 alpha:1]];
 		}
 	});
 }

@@ -41,7 +41,7 @@
 
 
 #import "CCEffectBloom.h"
-#import "CCEFfectUtils.h"
+#import "CCEffectUtils.h"
 #import "CCEffect_Private.h"
 #import "CCRenderer.h"
 #import "CCTexture.h"
