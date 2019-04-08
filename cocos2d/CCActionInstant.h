@@ -300,7 +300,7 @@
  @see [Blocks Programming Guide](https://developer.apple.com/library/ios/documentation/cocoa/Conceptual/Blocks/Articles/00_Introduction.html)
  */
 @interface CCActionCallBlock : CCActionInstant<NSCopying> {
-	void (^_block)();
+	void (^_block)(void);
 }
 
 
