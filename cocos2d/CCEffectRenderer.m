@@ -338,7 +338,7 @@ static GLKVector2 selectTexCoordPadding(CCEffectTexCoordSource tcSource, GLKVect
 {
     [renderer enqueueBlock:^{
         glBindFramebuffer(GL_FRAMEBUFFER, self->_oldFBO);
-        glViewport(self->_oldViewport.v[0], _oldViewport.v[1], _oldViewport.v[2], _oldViewport.v[3]);
+        glViewport(self->_oldViewport.v[0], self->_oldViewport.v[1], self->_oldViewport.v[2], self->_oldViewport.v[3]);
     } globalSortOrder:NSIntegerMax debugLabel:@"CCEffectRenderer: Restore FBO" threadSafe:NO];
     
 }
