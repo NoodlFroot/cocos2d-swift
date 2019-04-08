@@ -28,7 +28,7 @@
 #import "CCRenderer_Private.h"
 #import "CCCache.h"
 #import "CCTexture_Private.h"
-#import "CCShader_private.h"
+#import "CCShader_Private.h"
 #import "CCDirector_Private.h"
 #import "CCRenderDispatch.h"
 
@@ -140,13 +140,13 @@ void CCRENDERER_DEBUG_CHECK_ERRORS(void){
 
 @implementation CCRenderCommandCustom
 {
-	void (^_block)();
+	void (^_block)(void);
 	NSString *_debugLabel;
 	
 	NSInteger _globalSortOrder;
 }
 
--(instancetype)initWithBlock:(void (^)())block debugLabel:(NSString *)debugLabel globalSortOrder:(NSInteger)globalSortOrder
+-(instancetype)initWithBlock:(void (^)(void))block debugLabel:(NSString *)debugLabel globalSortOrder:(NSInteger)globalSortOrder
 {
 	if((self = [super init])){
 		_block = block;
@@ -363,7 +363,7 @@ static NSString *CURRENT_RENDERER_KEY = @"CCRendererCurrent";
 	}
 }
 
--(void)enqueueBlock:(void (^)())block globalSortOrder:(NSInteger)globalSortOrder debugLabel:(NSString *)debugLabel threadSafe:(BOOL)threadsafe
+-(void)enqueueBlock:(void (^)(void))block globalSortOrder:(NSInteger)globalSortOrder debugLabel:(NSString *)debugLabel threadSafe:(BOOL)threadsafe
 {
 	[_queue addObject:[[CCRenderCommandCustom alloc] initWithBlock:block debugLabel:debugLabel globalSortOrder:globalSortOrder]];
 	_lastDrawCommand = nil;
