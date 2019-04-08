@@ -1,6 +1,6 @@
 [submodule "external/Chipmunk"]
 	path = external/Chipmunk
-url=https://github.com/slembcke/Chipmunk2D.git
+	url=https://github.com/NoodlFroot/Chipmunk2D
 [submodule "external/ObjectAL"]
 	path = external/ObjectAL
 	url = https://github.com/NoodlFroot/ObjectAL-for-Cocos2D.git
