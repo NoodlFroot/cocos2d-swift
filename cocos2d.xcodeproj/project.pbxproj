@@ -533,7 +533,6 @@
 		B75C2E7C17C5908B002B0E0D /* NSAttributedString+CCAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B75C2E7A17C5908B002B0E0D /* NSAttributedString+CCAdditions.h */; };
 		B75C2E7D17C5908B002B0E0D /* NSAttributedString+CCAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B75C2E7B17C5908B002B0E0D /* NSAttributedString+CCAdditions.m */; };
 		B77060CF18341AD50043CC67 /* CCBReader_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B77060CE18341AD50043CC67 /* CCBReader_Private.h */; };
-		B77582CE1A76CDB200C8589F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B77582CD1A76CDB200C8589F /* libz.dylib */; };
 		B78AE46217E7AF1C0028BE0B /* CCButton.h in Headers */ = {isa = PBXBuildFile; fileRef = B78AE45A17E7AF1C0028BE0B /* CCButton.h */; };
 		B78AE46317E7AF1C0028BE0B /* CCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B78AE45B17E7AF1C0028BE0B /* CCButton.m */; };
 		B78AE46417E7AF1C0028BE0B /* CCControl.h in Headers */ = {isa = PBXBuildFile; fileRef = B78AE45C17E7AF1C0028BE0B /* CCControl.h */; };
@@ -574,7 +573,6 @@
 		B7E7DE391A76DB7D004234B7 /* cocos2dMacFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = B7E7DE381A76DB7D004234B7 /* cocos2dMacFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7E7DE4F1A76DB8F004234B7 /* libcocos2d-mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4037A819E37038007B6E8F /* libcocos2d-mac.a */; };
 		B7E7DE5B1A76DD68004234B7 /* dummy.c in Sources */ = {isa = PBXBuildFile; fileRef = B7E7DE5A1A76DD68004234B7 /* dummy.c */; };
-		B7E7DE711A76EBE1004234B7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B77582CD1A76CDB200C8589F /* libz.dylib */; };
 		B7E7DE731A76EBEA004234B7 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E7DE721A76EBEA004234B7 /* OpenGL.framework */; };
 		B7E7DE751A76EBF0004234B7 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E7DE741A76EBF0004234B7 /* GLKit.framework */; };
 		B7E7DE771A76EBFB004234B7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E7DE761A76EBFB004234B7 /* QuartzCore.framework */; };
@@ -1001,6 +999,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		790FFB0822A92CE400C01310 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B15348391BE1E7A10022C4BB /* Chipmunk7.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FF80DCFE1CA9C68500C44647;
+			remoteInfo = "Chipmunk-tvOS";
+		};
+		790FFB0A22A92CE400C01310 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B15348391BE1E7A10022C4BB /* Chipmunk7.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FF80DD261CA9C90100C44647;
+			remoteInfo = "ObjectiveChipmunk-tvOS";
+		};
 		7A40378219E36EFF007B6E8F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83409E2A19D5B791004B7EB9 /* SSZipArchive.xcodeproj */;
@@ -1336,7 +1348,6 @@
 		B75C2E7A17C5908B002B0E0D /* NSAttributedString+CCAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+CCAdditions.h"; sourceTree = "<group>"; };
 		B75C2E7B17C5908B002B0E0D /* NSAttributedString+CCAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+CCAdditions.m"; sourceTree = "<group>"; };
 		B77060CE18341AD50043CC67 /* CCBReader_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCBReader_Private.h; path = "cocos2d-ui/CCBReader/CCBReader_Private.h"; sourceTree = "<group>"; };
-		B77582CD1A76CDB200C8589F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		B78AE45A17E7AF1C0028BE0B /* CCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCButton.h; path = "cocos2d-ui/CCButton.h"; sourceTree = "<group>"; };
 		B78AE45B17E7AF1C0028BE0B /* CCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCButton.m; path = "cocos2d-ui/CCButton.m"; sourceTree = "<group>"; };
 		B78AE45C17E7AF1C0028BE0B /* CCControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCControl.h; path = "cocos2d-ui/CCControl.h"; sourceTree = "<group>"; };
@@ -1556,7 +1567,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B77582CE1A76CDB200C8589F /* libz.dylib in Frameworks */,
 				7A59498319E38C9800F65F90 /* libSSZipArchiveMac.a in Frameworks */,
 				7A4037C819E3712A007B6E8F /* OpenGL.framework in Frameworks */,
 				7A4037C619E37126007B6E8F /* QuartzCore.framework in Frameworks */,
@@ -1573,7 +1583,6 @@
 				B7E7DE771A76EBFB004234B7 /* QuartzCore.framework in Frameworks */,
 				B7E7DE751A76EBF0004234B7 /* GLKit.framework in Frameworks */,
 				B7E7DE731A76EBEA004234B7 /* OpenGL.framework in Frameworks */,
-				B7E7DE711A76EBE1004234B7 /* libz.dylib in Frameworks */,
 				B7E7DE4F1A76DB8F004234B7 /* libcocos2d-mac.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1652,7 +1661,6 @@
 				B7E7DE761A76EBFB004234B7 /* QuartzCore.framework */,
 				B7E7DE741A76EBF0004234B7 /* GLKit.framework */,
 				B7E7DE721A76EBEA004234B7 /* OpenGL.framework */,
-				B77582CD1A76CDB200C8589F /* libz.dylib */,
 				462D9B7E1A427E130040C5F2 /* JavaFoundation.framework */,
 				143F32D71A3A2E8A0019FD3C /* CoreJava.framework */,
 				14EF47A91A37F11C00A45BE4 /* JavaKit.framework */,
@@ -2104,9 +2112,11 @@
 				B15348441BE1E7A20022C4BB /* ChipmunkDemo.app */,
 				B15348461BE1E7A20022C4BB /* libChipmunk-Mac.a */,
 				B15348481BE1E7A20022C4BB /* libChipmunk-iOS.a */,
+				790FFB0922A92CE400C01310 /* libChipmunk-tvOS.a */,
 				B153484A1BE1E7A20022C4BB /* Benchmark iPhone.app */,
 				B153484C1BE1E7A20022C4BB /* libObjectiveChipmunk-Mac.a */,
 				B153484E1BE1E7A20022C4BB /* libObjectiveChipmunk-iOS.a */,
+				790FFB0B22A92CE400C01310 /* libObjectiveChipmunk-tvOS.a */,
 				B15348501BE1E7A20022C4BB /* ObjectiveChipmunkTests.xctest */,
 			);
 			name = Products;
@@ -3093,6 +3103,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		790FFB0922A92CE400C01310 /* libChipmunk-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libChipmunk-tvOS.a";
+			remoteRef = 790FFB0822A92CE400C01310 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		790FFB0B22A92CE400C01310 /* libObjectiveChipmunk-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libObjectiveChipmunk-tvOS.a";
+			remoteRef = 790FFB0A22A92CE400C01310 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		7A40378319E36EFF007B6E8F /* libSSZipArchiveAndroid.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
