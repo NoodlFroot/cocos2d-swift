@@ -187,8 +187,13 @@ FindPOTScale(CGFloat size, CGFloat fixedSize)
 	
 	CCDirectorIOS* director = (CCDirectorIOS*) [CCDirector sharedDirector];
 	
-	director.wantsFullScreenLayout = YES;
-	
+    // RAG: Replacing deprecated property with recommended successor
+	//director.wantsFullScreenLayout = YES;
+    if ([director respondsToSelector:@selector(edgesForExtendedLayout)])
+    {
+        director.edgesForExtendedLayout = UIRectEdgeAll;
+    }
+    
 	// Display FSP and SPF
 	[director setDisplayStats:[config[CCSetupShowDebugStats] boolValue]];
 	
