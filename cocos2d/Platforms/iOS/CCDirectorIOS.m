@@ -231,6 +231,10 @@
 	[super viewWillAppear:animated];
 
     [self startAnimationIfPossible];
+    
+    // RAG: Adding as the only way I can get some indication our full screen AVPlayerViewController has gone away - will watch for this notification when we have an active player
+    // Other alternative is to do what Apple say don't do and sub-class AVPlayerViewController to trap it's viewWillDisappear.... insane that it doesn't send out notifications!
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"CCDirector_viewWillAppear" object:self];
 }
 
 -(void) viewDidAppear:(BOOL)animated
