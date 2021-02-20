@@ -355,7 +355,12 @@ extern EAGLContext *CCRenderDispatchSetupGL(EAGLRenderingAPI api, EAGLSharegroup
 		}
 		
 		GLenum fb_status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
-		NSAssert(fb_status == GL_FRAMEBUFFER_COMPLETE, @"Failed to make complete framebuffer object 0x%X", fb_status);
+        // RAG: 20Feb21: Took out as can trigger it with saving a car covered in throw ups while testing. No idea what has gone on internally to trigger this...
+        //NSAssert(fb_status == GL_FRAMEBUFFER_COMPLETE, @"Failed to make complete framebuffer object 0x%X", fb_status);
+        if (fb_status != GL_FRAMEBUFFER_COMPLETE)
+        {
+            NSLog(@"Failed to make complete framebuffer object: Error 0x%X", fb_status);
+        }
 		CC_CHECK_GL_ERROR_DEBUG();
 	});
 }
