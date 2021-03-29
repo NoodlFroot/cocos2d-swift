@@ -529,7 +529,7 @@
         }
     }
  */
-@property(nonatomic,readonly) NSArray *children;
+@property(nonatomic,readonly) NSArray<CCNode*> *children;
 
 /** The scene this node is added to, or nil if it's not part of a scene.
  
