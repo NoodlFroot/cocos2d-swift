@@ -622,7 +622,7 @@ CCRenderDispatch(NO, ^{
 		}
 		
 #if __CC_PLATFORM_IOS && defined(DEBUG)
-		GLenum pixelFormat = _pixelFormatInfo->ccPixelFormat;
+		GLenum pixelFormat = (GLenum)_pixelFormatInfo->ccPixelFormat;
 		CCConfiguration *conf = [CCConfiguration sharedConfiguration];
 		
 		if( [conf OSVersion] >= CCSystemVersion_iOS_5_0 )

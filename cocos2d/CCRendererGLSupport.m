@@ -45,7 +45,7 @@ static const CCGraphicsBufferType CCGraphicsBufferGLTypes[] = {
 {
 	if((self = [super initWithCapacity:capacity elementSize:elementSize type:type])){
 		glGenBuffers(1, &_buffer);
-		_type = CCGraphicsBufferGLTypes[type];
+		_type = (GLenum)CCGraphicsBufferGLTypes[type];
 		
 		[self setup];
 	}
